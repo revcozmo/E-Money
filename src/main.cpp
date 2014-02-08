@@ -1987,8 +1987,9 @@ bool LoadBlockIndex(bool fAllowNew)
         pchMessageStart[1] = 0xc0;
         pchMessageStart[2] = 0xb8;
         pchMessageStart[3] = 0xdb;
-        hashGenesisBlock = uint256("0xa50faf35e1dddf4a076a907fbcef6d9d1595390cdb1c818a35dae53b67ad0aa8");
-    }
+        //hashGenesisBlock = uint256("0xa50faf35e1dddf4a076a907fbcef6d9d1595390cdb1c818a35dae53b67ad0aa8");
+	hashGenesisBlock = uint256("0x92f085dfcce6a94e229bb86ebc807e5791ce3c96b3b900cf849236333f79b645");    
+}
 
     //
     // Load block index
@@ -2019,7 +2020,8 @@ bool LoadBlockIndex(bool fAllowNew)
 	// vMerkleTree: 5a2e19825b
         
         // Genesis block
-        const char* pszTimestamp = "Traditionally one puts something timely here coinciding with the epoch";
+        const char* pszTimestamp = "Der Tagesspiegel 06/Jan/2014 Henry Maske, famous fighter, is now 50 years old";
+	//"Traditionally one puts something timely here coinciding with the epoch";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2031,14 +2033,14 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1391820242;//1366559428;
+        block.nTime    = 1391875544;//1366559428;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 758340;//2085386442;
+        block.nNonce   = 1401829;//2085386442;
 
         if (fTestNet)
         {
-            block.nTime    = 1391820242;//1366559428;
-            block.nNonce   = 758340;//386402991;
+            block.nTime    = 1391875544;//1366559428;
+            block.nNonce   = 1401829;//386402991;
         }
 
         //// debug print
@@ -2046,9 +2048,9 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
         //assert(block.hashMerkleRoot == uint256("0x5a2e19825b4162f68602039040f1e05d9f924ff00a3aff7327ca6abd6f3279bc"));
-	assert(block.hashMerkleRoot == uint256("0xf0a1e9a2edc00bc786d74683bb174316508c54236c94cf80fb59d1edbb3d626c"));
+	assert(block.hashMerkleRoot == uint256("0x2acf88d424e07e5b3d72d4ee05e58d0ff17a48a05ac838eb68ecb910139d2dc2"));
         // If genesis block hash does not match, then generate new genesis hash.
-        if (true && block.GetHash() != hashGenesisBlock)
+        if (false && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
